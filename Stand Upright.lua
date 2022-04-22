@@ -1,4 +1,6 @@
 local ESP = loadstring(game:HttpGet("https://kiriot22.com/releases/ESP.lua"))()
+loadstring(game:HttpGet("https://pastebin.com/raw/xADss2bb"))()
+
 
 local Mercury = loadstring(game:HttpGet("https://raw.githubusercontent.com/deeeity/mercury-lib/master/src.lua"))()
 local GUI = Mercury:Create{
@@ -27,32 +29,25 @@ GUI:Credit{
 	Description = "Hub Owner",
 }
 
+GUI:Credit{
+	Name = "sannin",
+	Description = "Anti-Cheat Bypass",
+}
+
 local Tab = GUI:Tab{
 	Name = "Main",
 	Icon = "rbxthumb://type=Asset&id=3517717568&w=150&h=150"
 }
 
-Tab:Button{
-	Name = "Bypass Anti-Cheat",
-	Description = nil,
-	Callback = function()
-		local OldNameCall; OldNameCall = hookmetamethod(game, "__namecall", newcclosure(function(self, ...)
-			local Method = getnamecallmethod()
-		 
-			if Method == "Raycast" or Method == "Kick" or Method == "FireServer" and tostring(self) == "PlayerStandMainHandle" then
-				return wait(9e9)
-			end 
-			
-			return OldNameCall(self, ...)
-		end))
-    end
-}
-
-Tab:Button{
+Tab:Toggle{
 	Name = "Grab Items",
+	StartingState = false,
 	Description = nil,
-	Callback = function()
+	Callback = function(state) 
+    getgenv().get = state
+	if state then
 		get()
+	end
     end
 }
 
@@ -181,10 +176,12 @@ ESP:AddObjectListener(game:GetService("Workspace").Items, {
 })
 
 function get()
-	for i, v in pairs(game:GetService("Workspace").Items:GetDescendants()) do
-		if v.Name == "Handle" then
-		game:GetService('Players').LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
-		wait(1)
-		end
-	end
-	end
+	while getgenv().get == true do
+		for i ,v in pairs(game:GetService("Workspace").Items:GetDescendants()) do
+			if v.Name == "Handle" then
+				tp(v.CFrame)
+		 end
+		 end
+		 wait(1)
+		 end
+end
