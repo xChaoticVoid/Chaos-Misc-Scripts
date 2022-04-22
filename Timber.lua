@@ -374,7 +374,7 @@ for i,v in pairs(game:GetService("Workspace").Plots:GetDescendants()) do
     if v:FindFirstChildOfClass("MeshPart") and v:FindFirstChild("Base") then
         v.Base.Transparency = 0.1
         v.Base.CanCollide = false
-        v.Base.Size = Vector3.new(15, 15, 15)
+        v.Base.Size = Vector3.new(20, 20, 20)
     end
 end
 end
