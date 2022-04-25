@@ -7,16 +7,9 @@ local GUI = Mercury:Create{
 }
 
 GUI:Notification{
-	Title = "Game Detected",
-	Text = "Saber Simulator",
-	Duration = 3,
-	Callback = function() end
-}
-
-GUI:Notification{
 	Title = "Discord",
 	Text = "Make Sure To Join The Discord Server! :D",
-	Duration = 3,
+	Duration = 5,
 	Callback = function() end
 }
 
