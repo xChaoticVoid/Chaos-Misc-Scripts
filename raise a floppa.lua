@@ -245,45 +245,6 @@ end)
 end
 }
 
-Tab:Toggle{
-	Name = "Noclip",
-	StartingState = false,
-	Description = nil,
-	Callback = function(state) 
-    if state then
-local noclip = true
-char = game.Players.LocalPlayer.Character
-while true do
-if noclip == true then
-for _,v in pairs(char:children()) do
-pcall(function()
-if v.className == "Part" then
-v.CanCollide = false
-end
-end)
-end
-end
-game:service("RunService").Stepped:wait()
-end
-else
-local noclip = true
-char = game.Players.LocalPlayer.Character
-while true do
-if noclip == true then
-for _,v in pairs(char:children()) do
-pcall(function()
-if v.className == "Part" then
-v.CanCollide = true
-end
-end)
-end
-end
-game:service("RunService").Stepped:wait()
-end
-end
-end
-}
-
 local Tab = GUI:Tab{
 	Name = "Discord",
 	Icon = "rbxthumb://type=Asset&id=9334666836&w=150&h=150"
